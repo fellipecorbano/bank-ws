@@ -13,13 +13,34 @@
    			http://www.springframework.org/schema/task http://www.springframework.org/schema/task/spring-task-3.0.xsd
    			http://cxf.apache.org/jaxws http://cxf.apache.org/schemas/jaxws.xsd">
  
+ 	<!-- Spring scan -->
  	<context:component-scan base-package="com.ciandt"></context:component-scan>
  	<context:annotation-config />
  	
-    <!-- <import resource="classpath:META-INF/cxf/cxf.xml" /> -->
-    <!-- <import resource="classpath:META-INF/cxf/cxf-servlet.xml" /> -->    
- 
-    <!-- id : Any name -->
+ 	<!-- Hibernate DataSource Bean -->
+ 	<bean id="dataSource" class="org.springframework.jdbc.datasource.DriverManagerDataSource">
+		<property name="driverClassName" value="oracle.jdbc.driver.OracleDriver"/>
+		<property name="url" value="jdbc:oracle:thin:@kimo:1521:XE"/>
+		<property name="username" value="fcorbano"/>
+		<property name="password" value="fcorbano"/>
+	</bean>
+ 	
+ 	<!-- Hibernate SessionFactory Bean --> 	
+ 	<bean id="sessionFactory" class="org.springframework.orm.hibernate4.LocalSessionFactoryBean">
+ 		<property name="dataSource" ref="dataSource" />	
+		<property name="hibernateProperties">
+			<props>				
+				<prop key="hibernate.connection.pool_size">1</prop>	
+				<prop key="hibernate.dialect">org.hibernate.dialect.Oracle10gDialect</prop>
+				<prop key="hibernate.cache.provider_class">org.hibernate.cache.NoCacheProvider</prop>	
+				<prop key="hibernate.show_sql">true</prop>				
+				<prop key="hibernate.hbm2ddl.auto">create</prop>
+			</props>
+		</property>									
+ 	</bean> 	
+ 	
+ 	<!-- JAX WS Endpoints -->
+ 	<!-- id : Any name -->
     <!-- implementor : Name of the class which implements the service interface -->
     <!-- address : path name relative to the application context. 
          This will resolve into http://localhost:8080/bank-ws/MathModule -->

@@ -5,12 +5,17 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
+import org.springframework.beans.factory.annotation.Autowired;
+
 import com.ciandt.beans.Account;
 import com.ciandt.beans.Transaction;
 import com.ciandt.enumeration.transType;
 
 public class DAOMock {
 
+	@Autowired
+	static AccountDAO accountDAO;
+	
 	public static Map<Long, Account> lsAccounts;
 	
 	public static Map<Long, Account> getAccountsMock(){
@@ -51,6 +56,9 @@ public class DAOMock {
 	
 	public static Account addAccount(Account c){
 		lsAccounts.put(c.getCpf(), c);		
+		
+		accountDAO.addAccount(c);
+		
 		return c;		
 	}
 	
