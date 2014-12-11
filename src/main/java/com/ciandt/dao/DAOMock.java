@@ -1,5 +1,6 @@
 package com.ciandt.dao;
 
+import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -67,8 +68,8 @@ public class DAOMock {
 	* Transaction Mock DAO
 	*********************************************/
 	public static boolean addTransaction(long cpf, Transaction transaction) {
-						
-		Account c = lsAccounts.get(cpf);
+		
+		Account c = getAccountsMock().get(cpf);
 		
 		if(!(c==null)){
 			
@@ -81,7 +82,14 @@ public class DAOMock {
 				return false;
 			}
 			
-			c.getTransactions().add(transaction);			
+			if(c.getTransactions()==null){
+				List<Transaction> transactions = new ArrayList<Transaction>();
+				transactions.add(transaction);
+				c.setTransactions(transactions);				
+			}else{
+				c.getTransactions().add(transaction);
+			}
+				
 			return true;
 		}
 		
@@ -90,7 +98,7 @@ public class DAOMock {
 
 	public static List<Transaction> listTransactions(long cpf) {
 			
-		Account c = lsAccounts.get(cpf);
+		Account c = getAccountsMock().get(cpf);
 		if(!(c==null))
 			return c.getTransactions();							
 		
