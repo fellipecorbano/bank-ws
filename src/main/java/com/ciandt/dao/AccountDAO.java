@@ -6,7 +6,7 @@ import org.springframework.stereotype.Repository;
 import com.ciandt.beans.Account;
 
 @Repository
-public class AccountDAO extends DAO{
+public class AccountDAO extends BaseDAO{
 	
 	public Account addAccount(Account account){
 		Session session = getCurrentSession();

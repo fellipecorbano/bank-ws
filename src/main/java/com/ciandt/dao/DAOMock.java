@@ -5,16 +5,27 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
+import javax.annotation.PostConstruct;
+
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Repository;
 
 import com.ciandt.beans.Account;
 import com.ciandt.beans.Transaction;
 import com.ciandt.enumeration.transType;
 
+@Repository
 public class DAOMock {
 
 	@Autowired
-	static AccountDAO accountDAO;
+	AccountDAO accountDAOWired;
+	
+	public static AccountDAO accountDAO;
+	
+	@PostConstruct
+	public void init(){
+		DAOMock.accountDAO = accountDAOWired;
+	}
 	
 	public static Map<Long, Account> lsAccounts;
 	

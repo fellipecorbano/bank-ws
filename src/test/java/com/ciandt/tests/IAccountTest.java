@@ -21,8 +21,8 @@ public class IAccountTest extends JunitSpringTestUtil{
 	public void publish(){
 		
 		try{
-			endpoint = Endpoint.create(accountWebService);
-			endpoint.publish("http://127.0.0.1:8099/MyWebApp/AccountWebService");
+			//endpoint = Endpoint.create(accountWebService);
+			//endpoint.publish("http://127.0.0.1:8099/MyWebApp/AccountWebService");
 		}catch(Exception e){
 			e.printStackTrace();
 		}

@@ -20,8 +20,8 @@ public Endpoint endpoint;
 	public void publish(){
 		
 		try{
-			endpoint = Endpoint.create(transactionWebService);
-			endpoint.publish("http://127.0.0.1:8099/MyWebApp/TransactionWebService");
+			//endpoint = Endpoint.create(transactionWebService);
+			//endpoint.publish("http://127.0.0.1:8099/MyWebApp/TransactionWebService");
 		}catch(Exception e){
 			e.printStackTrace();
 		}

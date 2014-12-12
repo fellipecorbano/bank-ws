@@ -28,6 +28,12 @@
  	<!-- Hibernate SessionFactory Bean --> 	
  	<bean id="sessionFactory" class="org.springframework.orm.hibernate4.LocalSessionFactoryBean">
  		<property name="dataSource" ref="dataSource" />	
+		<property name="annotatedClasses">
+			<list>
+				<value>com.ciandt.beans.Account</value>
+				<value>com.ciandt.beans.Transaction</value>
+			</list>
+		</property>		
 		<property name="hibernateProperties">
 			<props>				
 				<prop key="hibernate.connection.pool_size">1</prop>	
