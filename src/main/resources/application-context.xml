@@ -13,7 +13,7 @@
    			http://www.springframework.org/schema/task http://www.springframework.org/schema/task/spring-task-3.0.xsd
    			http://cxf.apache.org/jaxws http://cxf.apache.org/schemas/jaxws.xsd">
  
- 	<!-- Spring scan -->
+ 	<!-- Spring Scan -->
  	<context:component-scan base-package="com.ciandt"></context:component-scan>
  	<context:annotation-config />
  	
@@ -28,37 +28,38 @@
  	<!-- Hibernate SessionFactory Bean --> 	
  	<bean id="sessionFactory" class="org.springframework.orm.hibernate4.LocalSessionFactoryBean">
  		<property name="dataSource" ref="dataSource" />	
-		<property name="annotatedClasses">
-			<list>
-				<value>com.ciandt.beans.Account</value>
-				<value>com.ciandt.beans.Transaction</value>
-			</list>
-		</property>		
+		<property name="packagesToScan" value="com.ciandt.beans"/>		
 		<property name="hibernateProperties">
 			<props>				
 				<prop key="hibernate.connection.pool_size">1</prop>	
 				<prop key="hibernate.dialect">org.hibernate.dialect.Oracle10gDialect</prop>
 				<prop key="hibernate.cache.provider_class">org.hibernate.cache.NoCacheProvider</prop>	
-				<prop key="hibernate.show_sql">true</prop>				
+				<prop key="hibernate.show_sql">true</prop>		
 				<prop key="hibernate.hbm2ddl.auto">create</prop>
 			</props>
 		</property>									
- 	</bean> 	
- 	
+ 	</bean> 	 	
+ 		
+ 	<bean id="transactionManager" class="org.springframework.orm.hibernate4.HibernateTransactionManager">
+ 		<property name="dataSource" ref="dataSource"/>
+ 		<property name="sessionFactory" ref="sessionFactory"/>
+ 	</bean>
+ 	<tx:annotation-driven />
+ 	 	
  	<!-- JAX WS Endpoints -->
  	<!-- id : Any name -->
     <!-- implementor : Name of the class which implements the service interface -->
     <!-- address : path name relative to the application context. 
          This will resolve into http://localhost:8080/bank-ws/MathModule -->
     <jaxws:endpoint id="accountServiceEndpoint"
-            		implementor="com.ciandt.impl.AccountImpl"
-            		implementorClass="com.ciandt.interfaces.IAccount"
-            		address="/AccountService" />
+            		implementor="com.ciandt.impl.AccountWebServiceImpl"
+            		implementorClass="com.ciandt.interfaces.IAccountWebService"
+            		address="/AccountWebService" />
              		
     <jaxws:endpoint id="transactionServiceEndpoint"
-            		implementor="com.ciandt.impl.TransactionImpl"
-            		implementorClass="com.ciandt.interfaces.ITransaction"
-            		address="/TransactionService" />
+            		implementor="com.ciandt.impl.TransactionWebServiceImpl"
+            		implementorClass="com.ciandt.interfaces.ITransactionWebService"
+            		address="/TransactionWebService" />
             		
             		            		 
 </beans>

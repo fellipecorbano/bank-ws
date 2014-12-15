@@ -1,6 +1,6 @@
 package com.ciandt.enumeration;
 
-public enum transType{
+public enum TransactionType{
 	INCOME,
 	EXPENSE
 }

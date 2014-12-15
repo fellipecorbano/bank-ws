@@ -6,12 +6,12 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.ciandt.beans.Account;
-import com.ciandt.interfaces.IAccount;
+import com.ciandt.interfaces.IAccountWebService;
 import com.ciandt.services.AccountService;
 
-@WebService(endpointInterface="com.ciandt.interfaces.IAccount")
+@WebService(endpointInterface="com.ciandt.interfaces.IAccountWebService")
 @Service
-public class AccountImpl implements IAccount {	
+public class AccountWebServiceImpl implements IAccountWebService {	
 	
 	@Autowired
 	public AccountService accountService;

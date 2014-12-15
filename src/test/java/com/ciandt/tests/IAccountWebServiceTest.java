@@ -5,17 +5,15 @@ import javax.xml.ws.Endpoint;
 import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
-import org.springframework.beans.factory.annotation.Autowired;
 
-import com.ciandt.interfaces.IAccount;
-import com.ciandt.util.JunitSpringTestUtil;
+import com.ciandt.tests.util.JunitSpringTestUtil;
 
-public class IAccountTest extends JunitSpringTestUtil{
+public class IAccountWebServiceTest extends JunitSpringTestUtil{
 
 	public Endpoint endpoint;
 	
-	@Autowired
-	public IAccount accountWebService;
+	//@Autowired
+	//public IAccountWebService accountWebService;
 	
 	@Before
 	public void publish(){

@@ -1,4 +1,4 @@
-package com.ciandt.util;
+package com.ciandt.tests.util;
 
 import org.junit.runner.RunWith;
 import org.springframework.test.context.ContextConfiguration;

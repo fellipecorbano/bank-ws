@@ -3,8 +3,10 @@ package com.ciandt.beans;
 import java.util.ArrayList;
 import java.util.List;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 import javax.persistence.OneToMany;
@@ -16,7 +18,8 @@ public class Account {
 
 	@Id
 	@GeneratedValue
-	private Long id;
+	@Column(name="accountId")
+	private Long accountId;
 	
 	@Column(name="agency")
 	private String agency;
@@ -33,7 +36,7 @@ public class Account {
 	@Column(name="balance")
 	private double balance;
 	
-	@OneToMany(mappedBy="account")
+	@OneToMany(mappedBy="account", cascade=CascadeType.ALL, fetch=FetchType.EAGER)
 	private List<Transaction> transactions;
 
 	public Account(){
@@ -46,6 +49,10 @@ public class Account {
 		this.cpf = cpf;
 		this.clientName = nomeCliente;
 		this.balance = balance;		
+	}
+
+	public Long getAccountId() {
+		return accountId;
 	}
 
 	public String getAgency() {
@@ -96,4 +103,9 @@ public class Account {
 		this.transactions = transactions;
 	}
 	
+	@Override
+	public String toString() {
+		return "Account=[agency="+this.agency+", account="+this.account+", cpf="+this.cpf+", "
+				+ "clientName="+this.clientName+", balance="+this.balance+"]";
+	}
 }

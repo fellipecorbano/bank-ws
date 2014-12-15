@@ -8,12 +8,12 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.ciandt.beans.Transaction;
-import com.ciandt.interfaces.ITransaction;
+import com.ciandt.interfaces.ITransactionWebService;
 import com.ciandt.services.TransactionService;
 
-@WebService(endpointInterface="com.ciandt.interfaces.ITransaction")
+@WebService(endpointInterface="com.ciandt.interfaces.ITransactionWebService")
 @Service
-public class TransactionImpl implements ITransaction {	
+public class TransactionWebServiceImpl implements ITransactionWebService {	
 	
 	@Autowired
 	public TransactionService transactionService;
@@ -23,7 +23,7 @@ public class TransactionImpl implements ITransaction {
 	}
 
 	public List<Transaction> listTransactions(long cpf) {
-		return transactionService.listTransaction(cpf);
+		return transactionService.listTransactions(cpf);
 	}
 
 }

@@ -5,16 +5,13 @@ import javax.xml.ws.Endpoint;
 import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
-import org.springframework.beans.factory.annotation.Autowired;
 
-import com.ciandt.interfaces.ITransaction;
-
-public class ITransactionTest {
+public class ITransactionWebServiceTest {
 
 public Endpoint endpoint;
 	
-	@Autowired
-	public ITransaction transactionWebService;
+	//@Autowired
+	//public ITransactionWebService transactionWebService;
 		
 	@Before
 	public void publish(){

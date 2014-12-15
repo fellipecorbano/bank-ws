@@ -8,15 +8,14 @@ import javax.jws.WebService;
 
 import com.ciandt.beans.Transaction;
 
-@WebService(name="TransactionService")
-public interface ITransaction {
+@WebService(name="TransactionWebService")
+public interface ITransactionWebService {
 	
 	@WebMethod
 	public boolean addTransaction(@WebParam(name="cpf") long cpf, 
 			@WebParam(name="transaction") Transaction transaction);
 	
 	@WebMethod
-	public List<Transaction> listTransactions(@WebParam(name="cpf") long cpf);
-	
+	public List<Transaction> listTransactions(@WebParam(name="cpf") long cpf);	
 	
 }

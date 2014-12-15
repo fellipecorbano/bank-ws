@@ -6,8 +6,8 @@ import javax.jws.WebService;
 
 import com.ciandt.beans.Account;
 
-@WebService(name="AccountService")
-public interface IAccount {
+@WebService(name="AccountWebService")
+public interface IAccountWebService {
 	
 	@WebMethod
 	public Account getAccountByCPF(@WebParam(name="cpf") long cpf);	

@@ -9,8 +9,11 @@ import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.Table;
+import javax.xml.bind.annotation.XmlAccessType;
+import javax.xml.bind.annotation.XmlAccessorType;
+import javax.xml.bind.annotation.XmlTransient;
 
-import com.ciandt.enumeration.transType;
+import com.ciandt.enumeration.TransactionType;
 
 @Entity
 @Table(name="transaction")
@@ -22,7 +25,7 @@ public class Transaction {
 	
 	@Column(name="type")
 	@Enumerated(EnumType.STRING)
-	private transType type;
+	private TransactionType type;
 	
 	@Column(name="description")
 	private String description;
@@ -34,23 +37,23 @@ public class Transaction {
 	private double amount;	
 	
 	@ManyToOne
-	@JoinColumn(name="id")
+	@JoinColumn(name="accountId")	
 	private Account account;
 		
 	public Transaction(){}
 	
-	public Transaction(transType tipo, String descricao, String categoria, double amount){
+	public Transaction(TransactionType tipo, String descricao, String categoria, double amount){
 		this.type = tipo;
 		this.description = descricao;
 		this.category = categoria;
 		this.amount = amount;
 	}
 
-	public transType getType() {
+	public TransactionType getType() {
 		return type;
 	}
 
-	public void setType(transType type) {
+	public void setType(TransactionType type) {
 		this.type = type;
 	}
 
@@ -76,6 +79,21 @@ public class Transaction {
 
 	public void setAmount(double amount) {
 		this.amount = amount;
+	}
+		
+	@XmlTransient
+	public Account getAccount() {
+		return account;
+	}
+
+	public void setAccount(Account account) {
+		this.account = account;
+	}
+
+	@Override
+	public String toString() {
+		return "Transaction=[transId="+this.transId+", type="+this.type.toString()+", description="+this.description+", "
+				+ "category="+this.category+", amount="+this.amount+", account={"+this.account+"}]";
 	}
 	
 }
