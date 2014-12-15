@@ -214,8 +214,8 @@
 			<groupId>javax.servlet</groupId>
 			<artifactId>javax.servlet-api</artifactId>
 			<version>${javax.version}</version>
-		</dependency>
-
+		</dependency>		
+				
 	</dependencies>
   <build>
     <finalName>bank-ws</finalName>
