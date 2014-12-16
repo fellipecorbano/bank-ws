@@ -1,29 +1,22 @@
-<!DOCTYPE web-app PUBLIC
- "-//Sun Microsystems, Inc.//DTD Web Application 2.3//EN"
- "http://java.sun.com/dtd/web-app_2_3.dtd" >
-
-<web-app>
+<?xml version="1.0" encoding="UTF-8"?>
+<web-app xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xmlns="http://java.sun.com/xml/ns/javaee"
+	xsi:schemaLocation="http://java.sun.com/xml/ns/javaee http://java.sun.com/xml/ns/javaee/web-app_2_5.xsd" version="2.5">
   <display-name>CXF based services</display-name>
  
   <context-param>
-      <!-- Define the location of the spring's configuration file. -->
+  <!-- Define the location of the spring's configuration file. -->
       <param-name>contextConfigLocation</param-name>
       <param-value>classpath:application-context.xml</param-value>
-   </context-param>
- 
-  <listener>
-      <listener-class>org.springframework.web.context.ContextLoaderListener</listener-class>
-  </listener>
+   </context-param> 
  
   <servlet>
       <servlet-name>CXFServlet</servlet-name>
-      <display-name>CXF Servlet</display-name>
       <servlet-class>org.apache.cxf.transport.servlet.CXFServlet</servlet-class>
       <load-on-startup>1</load-on-startup>
   </servlet>   
   <servlet>
       <servlet-name>SpringMVC</servlet-name>
-      <display-name>Spring MVC Dispatcher Servlet</display-name>
       <servlet-class>org.springframework.web.servlet.DispatcherServlet</servlet-class>
       <init-param>
           <param-name>contextConfigLocation</param-name>
@@ -34,12 +27,15 @@
  
   <servlet-mapping>
       <servlet-name>CXFServlet</servlet-name>
-      <url-pattern>/webservice/*</url-pattern>
+      <url-pattern>/ws/*</url-pattern>
   </servlet-mapping> 
   <servlet-mapping>
       <servlet-name>SpringMVC</servlet-name>
-      <url-pattern>/webapp/*</url-pattern>
+      <url-pattern>/app/*</url-pattern>
   </servlet-mapping>
   
+  <listener>
+      <listener-class>org.springframework.web.context.ContextLoaderListener</listener-class>
+  </listener>
  
 </web-app>
