@@ -9,7 +9,7 @@ import org.springframework.web.servlet.ModelAndView;
 @RequestMapping("/index")
 public class IndexController {
 
-	@RequestMapping(value="/test", method = RequestMethod.GET)
+	@RequestMapping(value="/", method = RequestMethod.GET)
 	public ModelAndView index() {	
 		
   		return new ModelAndView("index").addObject("message","Testando MVC");

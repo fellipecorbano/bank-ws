@@ -25,8 +25,8 @@ public class AccountServiceTest extends JunitSpringTestUtil {
 	public static void init(){
 		cpf = new Long[]{12345678111L, 12345678222L, 12345678333L,	99999999999L, 11111111111L};
 				
-		Account c1 = new Account("0001", "01230123", cpf[0], "Jo„o da Silva", 12000);		
-		Account c2 = new Account("0002", "04560456", cpf[1], "MaurÌcio de Souza", 15478);		
+		Account c1 = new Account("0001", "01230123", cpf[0], "Jo√£o da Silva", 12000);		
+		Account c2 = new Account("0002", "04560456", cpf[1], "Maur√≠cio de Souza", 15478);		
 		Account c3 = new Account("0003", "07890789", cpf[2], "Alessandro Reis", 4567894.40);
 		Account c4 = new Account("0004", "04521852", cpf[3], "Victor Dias", 45137.50);
 		account = new Account[]{c1, c2, c3, c4};

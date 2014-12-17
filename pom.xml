@@ -20,7 +20,7 @@
   		<oracle.jdbc.version>10.2.0.2.0</oracle.jdbc.version>	
   		<junit.version>4.11</junit.version>	
   		<javax.version>3.1.0</javax.version>
-  		<jackson.version>1.5.3</jackson.version>
+  		<gson.version>2.3.1</gson.version>
   		<jstl.version>1.2</jstl.version>
 	</properties>
 
@@ -220,13 +220,14 @@
 			<version>${javax.version}</version>
 		</dependency>
 
-		<!-- Jackson -->
+		<!-- GSON -->
 
 		<dependency>
-			<groupId>org.codehaus.jackson</groupId>
-			<artifactId>jackson-mapper-asl</artifactId>
-			<version>${jackson.version}</version>
+			<groupId>com.google.code.gson</groupId>
+			<artifactId>gson</artifactId>
+			<version>${gson.version}</version>
 		</dependency>
+
 
 		<!-- JSTL -->
 		<dependency>
